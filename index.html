@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/all.css">
+
+<title>Notepad by Khai</title>
+<!-- Notepad Function-->
+<script src="js/function.js"></script>
+<script src="js/jscolor.js"></script>
+<style>
+body {margin:0;
+font-family:Arial;
+background-color: #0B223E;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #005B9A;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  font-size: 17px;    
+  border: none;
+  outline: none;
+  color: black;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #4682B4;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #4682B4;
+  color: black;
+}
+
+.dropdown-content a:hover {
+  background-color: #4682B4;
+  color: black;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child), .dropdown .dropbtn {
+    display: none;
+  }
+  .topnav a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .topnav.responsive .dropdown {float: none;}
+  .topnav.responsive .dropdown-content {position: relative;}
+  .topnav.responsive .dropdown .dropbtn {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+@media screen
+  {
+.forscreen { display:block; }
+.forprinting { display:none; }
+  }
+@media print
+  {
+.forscreen { display:none; }
+.forprinting { display:block; }
+  }
+
+#customsettings {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customsettings td, #customsettings th {
+  border: 2px solid #ddd;
+  padding: 2px;
+}
+
+#customsettings tr:nth-child(even){background-color: #6DB2E1;}
+
+#customsettings th {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  text-align: left;
+  background-color: #6DB2E1;
+  color: black;
+}
+
+
+        .button {
+  background-color: #6DB2E1; 
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+}
+
+.button2:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.content{
+  background-color: #2980b9;
+  overflow-x: hidden;
+  resize: none;
+  width:400px;
+  font-size: 13px;
+  color: #fff;
+  display: inline-block;
+  vertical-align: text-top;
+  min-height: 43px;
+  max-height: 75px;
+  border: 1px solid #2ecc71;
+  padding: 10px;
+}
+
+.wrapper {
+    padding: 20px;
+    margin:15px 0;
+    background-color: #6DB2E1;
+}
+ 
+textarea {
+    font-size:20px;
+    width:100%;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="topnav" id="myTopnav">
+    <div class="dropdown">
+      <button class="dropbtn">File 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+    <a onclick="opennewwindow()">Open New Window</a>
+    <a onclick="printTextArea()">Print Text</a>
+    <a onclick="savefilefunction()">Save file</a>
+      </div>
+    </div> 
+    <div class="dropdown">
+      <button class="dropbtn">Font Style 
+        <i class="fas fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content"> 
+    <a onclick="italicfont()">Italic</a>
+    <a onclick="Bold()">Bold</a> 
+    <a onclick="underline()">Underline</a>
+      </div>
+    </div> 
+    <div class="dropdown">
+      <button class="dropbtn">Text Align
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content"> 
+        <a onclick="alignleft()">Align Left</a>
+        <a onclick="aligncenter()">Center</a>
+        <a onclick="alignright()">Align Right</a>
+        <a onclick="alignjustify()">Justify</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Background Color 
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content"> 
+       <a><input data-jscolor="" oninput="bgcolorpicker(this);"></a>
+      </div>
+    </div>
+    <a onclick="clearTextarea()">Clear Text</a>
+    <a onclick="aboutnotepad()">About Notepad</a>
+    <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="TopNavScript()">&#9776;</a>
+  </div>
+
+    <div style="overflow-x:auto;">
+      <table id="customsettings"> 
+        <tr>
+          <th>Load Text files into Textarea:</th>
+          <th>Change Font:</th>
+          <th>Font Color Picker</th>
+          <th>Custom Font Sizes:</th>
+        </tr>
+        <tr>
+          <td><div>
+            <input class="button button2" type="file" value="Get File" id="fileToLoad">
+            <button onclick="uploadFile()" class="viewBtn button button2">Load Selected File</button>
+            </div></td>
+            <td><select id="fontlist" class="input"  onchange="changeFont(this);">
+              <option value="Font List">Font List</option>
+              <option value="Courier New">Courier New</option>
+              <option value="Times New Roman">Times New Roman</option>
+            <option value="Helvetica">Helvetica</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Brush Script MT">Brush Script MT</option>
+            </select></td>
+            <td> <input data-jscolor="" oninput="colorpicker(this);"></td>
+            <td>  <div>
+             <select id="fontsize" class="input"  onchange="changeTextSize()">
+              <option value="Select Font Size">Select Font Size</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="14">14</option>
+                <option value="16">16</option>
+                <option value="18">18</option>
+                <option value="20">20</option>
+                <option value="22">22</option>
+                <option value="24">24</option>
+                <option value="26">26</option>
+                <option value="28">28</option>
+                <option value="36">36</option>
+                <option value="48">48</option>
+                <option value="72">72</option>
+              </select>
+              </div></td>
+        </tr>
+      </table>
+    </div>
+     <!-- TextArea Code -->
+     <div class="forscreen">
+      <div id="getcontent" class="wrapper">
+        <form>
+       <textarea id="content" onkeyup="countWords(this);" onclick="countWords(this);" cols="30" rows="15"></textarea>
+     </form>
+     </div>
+    <div class="container">
+      <p id="count-words" style="color: #fff; font-size: 2em;"> </p>
+     </div>
+     
+  </div>
+</body>
+  
+<script type="text/javascript">
+  function printTextArea() {
+    childWindow = window.open('','childWindow','location=yes, menubar=yes, toolbar=yes');
+    childWindow.document.open();
+    childWindow.document.write('<html><head></head><body>');
+    childWindow.document.write(document.getElementById('content').value.replace(/\n/gi,'<br>'));
+    childWindow.document.write('</body></html>');
+    childWindow.print();
+    childWindow.document.close();
+    childWindow.close();
+  }
+</script>
+<script>
+  function TopNavScript() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
+  } 
+
+  </script>
+  <!-- Navigation Script -->
+
+  <!-- Close button option -->
+  <script>
+    jscolor.presets.default = {
+      closeButton:true
+    };
+    </script>
+    <!-- Close button option -->
+    <script>
+      function countWords(self) {
+        var spaces = self.value.match(/\S+/g);
+        var words = spaces ? spaces.length : 0;
+        document.getElementById("count-words").innerHTML = words + " words";
+      }
+    </script>
+</html>
